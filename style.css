@@ -121,6 +121,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 ::selection { background: var(--accent-fill); color: var(--accent-ink); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
+/* Behave like an app, not a document: no text selection on tap or long-press, no
+   blue tap flash, no image drag or "save image" callout. Form fields stay
+   selectable so visitors can edit what they type; keyboard focus rings stay. */
+html { -webkit-tap-highlight-color: transparent; }
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, [contenteditable] { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
+img, svg, canvas { -webkit-user-drag: none; user-select: none; }
+:focus:not(:focus-visible) { outline: none; }
+
 .container { width: 100%; max-width: calc(var(--container) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
 .section { position: relative; padding-block: clamp(96px, 13vw, 168px); }
 
