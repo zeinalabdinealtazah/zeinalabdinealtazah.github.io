@@ -111,8 +111,12 @@ const AR = {
     'form.hi': 'أردت إلقاء التحية',
     'form.name': 'اسمك',
     'form.msg': 'رسالتك',
+    'form.email': 'بريدك الإلكتروني',
+    'form.doneTitle': 'وصلت رسالتك',
+    'form.doneText': 'شكراً لك — الرسالة الآن في بريدي، وسأردّ عليك عبر البريد قريباً.',
+    'form.again': 'إرسال رسالة أخرى',
     'form.send': 'أرسل الرسالة',
-    'form.note': 'سيُفتح تطبيق البريد لديك وقد جُهّز كل شيء.',
+    'form.note': 'تصل مباشرةً إلى بريدي — وعادةً أردّ خلال يوم.',
     'footer.made': 'صُمّم وطُوّر في دبي',
     'footer.top': 'العودة للأعلى',
     'work.tagline': 'منصة للعناية بالبشرة والجمال والعافية مدعومة بالذكاء الاصطناعي — متاحة على App Store و Google Play والويب، بالعربية والإنجليزية.',
@@ -176,8 +180,10 @@ const DYN = {
         cursor: { 'work.visit': 'Visit ↗', 'award.cursor': '🎉', 'contact.mail': 'Email ✉' },
         copied: 'Email copied ✓', copyFail: 'Copy failed — please copy it manually',
         celebrate: 'Thanks for celebrating with me! 🎉',
-        formMissing: 'Please add your name and a message',
-        formSent: 'Opening your email app… ✉️',
+        formMissing: 'Please add your name, a valid email and a message',
+        formSending: 'Sending…',
+        formSent: 'Message sent ✓',
+        formFail: 'Could not send — opening your email app instead',
         subjects: { hiring: 'Job opportunity', project: 'Freelance project', collab: 'Collaboration', hi: 'Hello from your portfolio' },
         langLabel: 'التبديل إلى العربية', langBtn: 'ع', pose: 'Change pose', palette: 'Open command palette',
         day: 'Day theme', night: 'Night theme', until: 'until', auto: 'Auto',
@@ -199,8 +205,10 @@ const DYN = {
         cursor: { 'work.visit': 'زيارة ↗', 'award.cursor': '🎉', 'contact.mail': 'راسلني ✉' },
         copied: 'نُسخ البريد الإلكتروني ✓', copyFail: 'تعذّر النسخ — يُرجى نسخه يدوياً',
         celebrate: 'شكراً لمشاركتي الاحتفال! 🎉',
-        formMissing: 'يُرجى كتابة اسمك ورسالتك',
-        formSent: 'جارٍ فتح تطبيق البريد… ✉️',
+        formMissing: 'يُرجى كتابة اسمك وبريد صحيح ورسالتك',
+        formSending: 'جارٍ الإرسال…',
+        formSent: 'أُرسلت الرسالة ✓',
+        formFail: 'تعذّر الإرسال — سيُفتح تطبيق البريد بدلاً من ذلك',
         subjects: { hiring: 'فرصة عمل', project: 'مشروع مستقل', collab: 'تعاون', hi: 'تحية من موقعك' },
         langLabel: 'Switch to English', langBtn: 'EN', pose: 'تغيير الوضعية', palette: 'فتح لوحة الأوامر',
         day: 'المظهر النهاري', night: 'المظهر الليلي', until: 'حتى', auto: 'تلقائي',
@@ -1089,7 +1097,33 @@ function updateEditor(y) {
     $('#sbLine').textContent = `Ln ${first + mid + 1}, Col 1`;
 }
 
+// Phone tab bar: steps out of the way while the visitor scrolls down to read,
+// comes back on any scroll up, and stays at the very top and bottom of the page.
+const tabbarEl = $('#tabbar'), nav = $('#nav');
+// The tab bar waits off-screen on the first screen (so the hero shows whole) and
+// the top bar stays; reading downwards hides both, any scroll up brings them back.
+let tbLast = 0, tbAnchor = 0, tbDir = 0, tbHidden = false, tbFirst = true;
+function setBars(hideTab, hideNav) {
+    tabbarEl.classList.toggle('away', hideTab);
+    nav.classList.toggle('away', hideNav);   // CSS limits the top bar's hiding to phones
+}
+function updateTabbar(y) {
+    if (y === tbLast) return;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const dir = y > tbLast ? 1 : -1;
+    if (dir !== tbDir) { tbAnchor = tbLast; tbDir = dir; }   // distance is measured from where the direction changed
+    let hide = tbHidden;
+    if (y >= max - 4) hide = false;                          // at the very end: footer keeps room for it
+    else if (dir > 0 && y - tbAnchor > 24) hide = true;
+    else if (dir < 0 && tbAnchor - y > 12) { hide = false; tbFirst = false; }
+    tbHidden = hide;
+    setBars(hide || (tbFirst && y < 80), hide && y > 80);
+    tbLast = y;
+}
+setBars(true, false);
+
 function onScroll(y, velocity = 0) {
+    updateTabbar(y);
     updateEditor(y);
     field?.setVelocity(velocity);
     syncField();
@@ -1425,18 +1459,52 @@ async function copyEmail() {
 }
 $('#copyEmail').addEventListener('click', copyEmail);
 
-$('#contactForm').addEventListener('submit', e => {
+// Messages go to Zein's inbox through Web3Forms. The access key is meant to be public:
+// it can only deliver to the address it was issued for.
+const WEB3FORMS_KEY = '211e227e-524c-43da-b567-cc50c33d8e1b';
+const form = $('#contactForm');
+form.addEventListener('submit', async e => {
     e.preventDefault();
-    const { name: nameEl, message: msgEl, topic } = e.currentTarget.elements;
-    const name = nameEl.value.trim(), message = msgEl.value.trim();
+    const { name: nameEl, email: mailEl, message: msgEl, topic, botcheck } = form.elements;
+    const name = nameEl.value.trim(), email = mailEl.value.trim(), message = msgEl.value.trim();
+    const okMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
     nameEl.closest('.field').classList.toggle('invalid', !name);
+    mailEl.closest('.field').classList.toggle('invalid', !okMail);
     msgEl.closest('.field').classList.toggle('invalid', !message);
-    if (!name || !message) { toast(t().formMissing); return; }
-    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(`${t().subjects[topic.value]} — ${name}`)}&body=${encodeURIComponent(`${message}\n\n— ${name}`)}`;
-    const r = e.submitter?.getBoundingClientRect();
-    if (r) burst(r.left + r.width / 2, r.top, 100);
-    toast(t().formSent);
+    if (!name || !okMail || !message) { toast(t().formMissing); return; }
+    if (botcheck.checked) return;
+    const subject = `${t().subjects[topic.value]} — ${name}`;
+    const fallback = () => { location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${message}\n\n— ${name} (${email})`)}`; };
+    if (!WEB3FORMS_KEY) { fallback(); return; }
+
+    const btn = e.submitter || $('button[type=submit]', form), label = $('.send-label', btn);
+    btn.disabled = true; form.classList.add('sending'); label.textContent = t().formSending;
+    try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+                access_key: WEB3FORMS_KEY, subject, from_name: 'Portfolio — ' + name, replyto: email,
+                name, email, topic: t().subjects[topic.value], message, language: root.lang, page: location.href,
+            }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.success) throw new Error(data.message || res.status);
+        const r = btn.getBoundingClientRect();
+        burst(r.left + r.width / 2, r.top, 120);
+        toast(t().formSent);
+        form.reset();
+        form.classList.add('done');
+        $('.form-done', form).hidden = false;
+    } catch (err) {
+        toast(t().formFail);
+        setTimeout(fallback, 900);
+    } finally {
+        btn.disabled = false; form.classList.remove('sending');
+        label.textContent = root.lang === 'ar' ? AR['form.send'] : label.dataset.en;
+    }
 });
+$('#formAgain').addEventListener('click', () => { form.classList.remove('done'); $('.form-done', form).hidden = true; form.elements.name.focus(); });
 $$('#contactForm input, #contactForm textarea').forEach(el => el.addEventListener('input', () => el.closest('.field')?.classList.remove('invalid')));
 
 /* =========================================================
