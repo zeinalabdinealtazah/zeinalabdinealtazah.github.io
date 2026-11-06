@@ -459,10 +459,21 @@
                             <label class="choice"><input type="radio" name="topic" value="collab"><span data-i18n="form.collab">A collaboration</span></label>
                             <label class="choice"><input type="radio" name="topic" value="hi"><span data-i18n="form.hi">Just saying hello</span></label>
                         </div>
-                        <label class="field"><span data-i18n="form.name">Your name</span><input type="text" name="name" autocomplete="name" required></label>
-                        <label class="field"><span data-i18n="form.msg">Message</span><textarea name="message" rows="5" required></textarea></label>
-                        <button type="submit" class="btn btn-primary" data-magnetic><span data-i18n="form.send">Send message</span><span class="btn-icon" aria-hidden="true">→</span></button>
-                        <p class="form-note" data-i18n="form.note">Opens your email app with everything filled in.</p>
+                        <div class="field-row">
+                            <label class="field"><span data-i18n="form.name">Your name</span><input type="text" name="name" autocomplete="name" required maxlength="80"></label>
+                            <label class="field"><span data-i18n="form.email">Your email</span><input type="email" name="email" autocomplete="email" required maxlength="120" dir="ltr"></label>
+                        </div>
+                        <label class="field"><span data-i18n="form.msg">Message</span><textarea name="message" rows="5" required maxlength="4000"></textarea></label>
+                        <!-- spam trap: people never see or fill this -->
+                        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <button type="submit" class="btn btn-primary" data-magnetic><span class="send-label" data-i18n="form.send">Send message</span><span class="btn-icon" aria-hidden="true">→</span></button>
+                        <p class="form-note" data-i18n="form.note">Goes straight to my inbox — I usually reply within a day.</p>
+                        <div class="form-done" hidden role="status">
+                            <span class="done-ico" aria-hidden="true">✓</span>
+                            <b data-i18n="form.doneTitle">Message sent</b>
+                            <p data-i18n="form.doneText">Thanks — it is in my inbox. I will get back to you by email soon.</p>
+                            <button type="button" class="btn btn-ghost btn-sm" id="formAgain" data-i18n="form.again">Send another</button>
+                        </div>
                     </form>
                 </div>
             </div>
