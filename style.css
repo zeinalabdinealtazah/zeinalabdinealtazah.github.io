@@ -1357,6 +1357,9 @@ html[lang="ar"] .insp-k { text-transform: none; letter-spacing: 0; }
 .done-ico { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; font-size: 1.8rem; color: #fff; background: #2fbf6c; box-shadow: 0 0 0 10px rgba(47, 191, 108, .15); }
 @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
 
+/* very narrow phones: the mark alone carries the brand */
+@media (max-width: 359px) { .logo-sep, svg.logo-text { display: none; } }
+
 /* Scheduled theme switch while the page is open: colours cross-fade */
 .theme-fade, .theme-fade *, .theme-fade *::before, .theme-fade *::after {
     transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease, box-shadow 1.2s ease, fill 1.2s ease !important;
@@ -1387,7 +1390,16 @@ html[lang="ar"] .insp-k { text-transform: none; letter-spacing: 0; }
 
 @media (max-width: 899px) {
     :root { --nav-h: 74px; --sb-space: 0px; }
-    .nav-bar { height: 54px; }
+    /* phone top bar: mark, wordmark and three round buttons fit edge to edge */
+    .nav { padding-inline: 10px; }
+    .nav-bar { height: 54px; gap: 4px; padding: 0 5px 0 8px; }
+    html[dir="rtl"] .nav-bar { padding: 0 8px 0 5px; }
+    .logo { gap: 8px; padding-inline: 2px; min-width: 0; }
+    .logo-mark { width: 56px; height: 28px; }
+    .logo-sep { height: 20px; }
+    svg.logo-text { width: 70px; height: 14px; }
+    .nav-actions { gap: 2px; flex: none; }
+    .icon-btn, .kbd-btn { height: 40px; min-width: 40px; padding-inline: 0; }
     .tabs, .nav-cta, .statusbar { display: none; }
     .tabbar { display: flex; }
     .footer-inner { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)); }

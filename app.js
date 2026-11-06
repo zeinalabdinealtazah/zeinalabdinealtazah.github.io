@@ -478,7 +478,7 @@ function prepNameWeight() {
 }
 if (!reduceMotion) {
     let px = -1e4, py = -1e4, waveStart = null;
-    addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; }, { passive: true });
+    addEventListener('pointermove', e => { if (e.pointerType === 'mouse') { px = e.clientX; py = e.clientY; } }, { passive: true });
     window.nameWave = () => { waveStart = performance.now(); };
     (function nameLoop(now) {
         requestAnimationFrame(nameLoop);
@@ -757,13 +757,19 @@ const field = (() => {
 
     // ---- pointer ----
     const mouse = { x: 0, y: 0, tx: 0, ty: 0, wx: 99, wy: 99 };
+    // Only a real mouse pushes particles aside: a finger's last touch point would otherwise
+    // stay put and leave a permanent hole in the portrait.
+    const park = () => { mouse.wx = 99; mouse.wy = 99; mouse.tx = 0; mouse.ty = 0; };
     addEventListener('pointermove', e => {
+        if (e.pointerType !== 'mouse') return;
         mouse.tx = e.clientX / innerWidth - .5;
         mouse.ty = e.clientY / innerHeight - .5;
         const upp = unitsPerPx();
         mouse.wx = (e.clientX - innerWidth / 2) * upp;
         mouse.wy = -(e.clientY - innerHeight / 2) * upp;
     }, { passive: true });
+    addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') park(); }, { passive: true });
+    document.addEventListener('pointerleave', park);
 
     let velocity = 0, kick = 0;
     const setVelocity = v => { velocity = v; };
@@ -1480,14 +1486,13 @@ form.addEventListener('submit', async e => {
     const btn = e.submitter || $('button[type=submit]', form), label = $('.send-label', btn);
     btn.disabled = true; form.classList.add('sending'); label.textContent = t().formSending;
     try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify({
-                access_key: WEB3FORMS_KEY, subject, from_name: 'Portfolio — ' + name, replyto: email,
-                name, email, topic: t().subjects[topic.value], message, language: root.lang, page: location.href,
-            }),
-        });
+        // FormData is a "simple" request: no CORS preflight, which the service rejects for JSON.
+        const fd = new FormData();
+        Object.entries({
+            access_key: WEB3FORMS_KEY, subject, from_name: 'Portfolio — ' + name, replyto: email,
+            name, email, topic: t().subjects[topic.value], message, language: root.lang, page: location.href,
+        }).forEach(([k, v]) => fd.append(k, v));
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
         const data = await res.json().catch(() => ({}));
         if (!res.ok || !data.success) throw new Error(data.message || res.status);
         const r = btn.getBoundingClientRect();
