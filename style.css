@@ -1454,3 +1454,47 @@ html[lang="ar"] .insp-k { text-transform: none; letter-spacing: 0; }
     .award { grid-template-columns: 88px minmax(0, 1fr); }
     .award-photo { width: 88px; }
 }
+
+/* =========================================================
+   Phone hero: photo and name side by side.
+   The name sits in its own column on three lines (Zein / Alabdine / Altazah),
+   sized from the screen width so its widest word ("Alabdine", 4.06em wide;
+   Arabic "العابدين", 3.85em) exactly fills the column with a ~3% margin.
+   ========================================================= */
+.hint-short { display: none; }
+@media (max-width: 600px) {
+    .hero-inner {
+        --name-col: calc((100vw - 2 * var(--gutter) - 12px) * .52);
+        grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
+        grid-template-rows: 1fr 1fr auto auto auto;
+        grid-template-areas: "photo name" "photo role" "meta meta" "term term" "cta cta";
+        column-gap: 12px; row-gap: 0; align-items: stretch;
+    }
+    .hero-copy { display: contents; }
+    .hero-visual { grid-area: photo; order: 0; width: 100%; height: auto; display: block; align-self: center; }
+    .pose { width: 100%; height: auto; aspect-ratio: 547 / 1069; }
+
+    .hero-name { grid-area: name; align-self: end; font-size: calc(var(--name-col) / 4.2); line-height: .98; margin: 0; }
+    html[lang="ar"] .hero-name { font-size: calc(var(--name-col) / 3.98); line-height: 1.18; }
+    .hero-name .line { white-space: normal; }
+    .hero-role { grid-area: role; align-self: start; margin-top: 12px; font-size: clamp(.86rem, 3.6vw, 1rem); line-height: 1.4; }
+    .hero-meta { grid-area: meta; margin: 20px 0 0; font-size: .74rem !important; }
+    .term { grid-area: term; justify-self: start; margin-top: 12px; max-width: 100%; }
+    .hero-cta { grid-area: cta; margin-top: 20px; padding-bottom: 0; }
+
+    /* bubble and hint sit on the photo itself, inside its column */
+    .bubble {
+        /* centred with left/right + auto margins: the bob animation owns `translate` */
+        position: absolute; top: auto; bottom: 15%; left: 0; right: 0; inset-inline-start: 0; margin: 0 auto;
+        width: max-content; max-width: 100%; padding: 7px 11px; min-height: 0;
+        font-size: .76rem; line-height: 1.35; white-space: normal; text-align: center; justify-content: center;
+    }
+    .bubble::after { display: none; }
+    .pose-hint {
+        position: absolute; bottom: 2%; left: 50%; transform: translateX(-50%); margin: 0;
+        padding: 7px 12px; font-size: .74rem; gap: 6px;
+    }
+    .pose-hint:hover { transform: translateX(-50%) translateY(-2px); }
+    .hint-long { display: none; }
+    .hint-short { display: inline; }
+}
