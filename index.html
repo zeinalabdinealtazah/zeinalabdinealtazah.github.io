@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Zein Alabdine Altazah — Senior AI Software Engineer</title>
+    <meta name="description" content="Zein Alabdine Altazah — Senior AI Software Engineer in Dubai. Led the build and launch of ONSTA on iOS, Android and web.">
+    <meta name="theme-color" content="#0b0a10">
+    <link rel="icon" href="assets/brand/zm-icon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+    <script>
+        (function () {
+            var d = document.documentElement, l = null, m = null;
+            try { l = localStorage.getItem('lang'); m = localStorage.getItem('themeMode'); } catch (e) {}
+            // Theme mode: "auto" (default) follows the visitor's clock, light 07:00–19:00;
+            // a visitor can pin light or dark instead.
+            if (m !== 'light' && m !== 'dark') m = 'auto';
+            var hr = new Date().getHours(), q = /[?&]theme=(light|dark)/.exec(location.search);
+            d.dataset.themeMode = m;
+            d.dataset.theme = q ? q[1] : m !== 'auto' ? m : (hr >= 7 && hr < 19 ? 'light' : 'dark');
+            if (l === 'ar') { d.lang = 'ar'; d.dir = 'rtl'; }
+            d.classList.add('js');
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="zmS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--ms1,#f2f1fa)"/><stop offset=".55" style="stop-color:var(--ms2,#c9c7df)"/><stop offset="1" style="stop-color:var(--ms3,#8f8bb0)"/></linearGradient>
+<linearGradient id="zmF" x1="0" y1="0" x2="1" y2="0"><stop offset="0" style="stop-color:var(--ms1,#f2f1fa)"/><stop offset=".55" style="stop-color:var(--ms2,#c9c7df)"/><stop offset="1" style="stop-color:var(--mb2,#5006fd)"/></linearGradient>
+<linearGradient id="zmB" x1="0" y1="1" x2="1" y2="0"><stop offset="0" style="stop-color:var(--mb1,#3a00c8)"/><stop offset=".6" style="stop-color:var(--mb2,#5006fd)"/><stop offset="1" style="stop-color:var(--mb3,#7a4dff)"/></linearGradient>
+</defs>
+<symbol id="zm-mark" viewBox="36 48 774 372"><polygon points="60,132 130,52 470,52 600,188 543,245 408,132" fill="url(#zmS)"/><polygon points="40,416 330,150 422,150 165,416" fill="url(#zmB)"/><polygon points="210,416 270,352 400,352 462,416" fill="url(#zmB)"/><polygon points="380,268 438,215 535,300 640,214 692,262 528,412" fill="url(#zmF)"/><polygon points="640,214 805,58 805,345 720,416 720,238 692,262" fill="url(#zmB)"/></symbol>
+<symbol id="zm-word" viewBox="0 0 513 100"><polygon points="0,0 92,0 92,15 0,15" fill="url(#zmS)"/><polygon points="0,85 92,85 92,100 0,100" fill="url(#zmS)"/><polygon points="73.25,15 92,15 18.75,85 0,85" fill="url(#zmS)"/><polygon points="166,0 258,0 258,15 166,15" fill="url(#zmS)"/><polygon points="174,42.5 250,42.5 250,57.5 174,57.5" fill="url(#zmS)"/><polygon points="166,85 258,85 258,100 166,100" fill="url(#zmS)"/><polygon points="332,0 347,0 347,100 332,100" fill="url(#zmS)"/><polygon points="421,0 436,0 436,100 421,100" fill="url(#zmS)"/><polygon points="498,0 513,0 513,100 498,100" fill="url(#zmS)"/><polygon points="421,0 440.5,0 513,100 493.5,100" fill="url(#zmS)"/></symbol></svg>
+    <a href="#work" class="skip-link" data-i18n="skip">Skip to content</a>
+
+    <canvas id="gl" class="gl" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="gutter" id="gutter" aria-hidden="true"></div>
+    <div class="cursor" id="cursor" aria-hidden="true"><span id="cursorLabel"></span></div>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Floating glass nav -->
+    <header class="nav" id="nav">
+        <div class="nav-bar glass">
+            <a href="#top" class="logo" aria-label="Zein Altazah — home">
+                <svg class="logo-mark" viewBox="36 48 774 372" aria-hidden="true"><use href="#zm-mark"/></svg>
+                <span class="logo-sep logo-text" aria-hidden="true"></span>
+                <svg class="logo-text" viewBox="0 0 513 100" aria-hidden="true"><use href="#zm-word"/></svg>
+            </a>
+            <nav class="tabs" id="navLinks" aria-label="Main">
+                <span class="blob" aria-hidden="true"></span>
+                <a href="#work" data-i18n="nav.work">Work</a>
+                <a href="#lab" data-i18n="nav.lab">Lab</a>
+                <a href="#about" data-i18n="nav.about">About</a>
+                <a href="#skills" data-i18n="nav.skills">Toolkit</a>
+                <a href="#experience" data-i18n="nav.experience">Experience</a>
+                <a href="#contact" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="kbd-btn" id="paletteBtn" type="button" aria-label="Open command palette" data-magnetic>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+                    <kbd class="kbd-hint" id="kbdHint">Ctrl K</kbd>
+                </button>
+                <button class="icon-btn theme-btn" id="themeBtn" type="button" data-magnetic>
+                    <svg class="i-auto" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+                    <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+                    <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+                </button>
+                <button class="icon-btn lang-btn" id="langToggle" type="button" data-magnetic>ع</button>
+                <a href="#contact" class="nav-cta" data-magnetic><span data-i18n="nav.cta">Let's talk</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Phone tab bar (glass, like a native app) -->
+    <nav class="tabbar glass" id="tabbar" aria-label="Sections">
+        <span class="blob" aria-hidden="true"></span>
+        <a href="#work"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7" width="17" height="12.5" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/></svg><span data-i18n="nav.work">Work</span></a>
+        <a href="#lab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 3.5h5M10.5 3.5v6L5 19a1.2 1.2 0 0 0 1 1.5h12a1.2 1.2 0 0 0 1-1.5l-5.5-9.5v-6"/><path d="M7.5 15h9"/></svg><span data-i18n="nav.lab">Lab</span></a>
+        <a href="#about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.5-5.5 7-5.5s6.2 1.9 7 5.5"/></svg><span data-i18n="nav.about">About</span></a>
+        <a href="#skills"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/></svg><span data-i18n="nav.skills">Toolkit</span></a>
+        <a href="#experience"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="6" r="2"/><circle cx="6.5" cy="18" r="2"/><circle cx="17.5" cy="9" r="2"/><path d="M6.5 8v8M17.5 11c0 3-4 3.5-9.4 6"/></svg><span data-i18n="nav.experience">Experience</span></a>
+        <a href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v9.5h-9l-4.5 3.5v-3.5h-1.5z"/></svg><span data-i18n="nav.contact">Contact</span></a>
+    </nav>
+
+    <!-- Command palette -->
+    <div class="palette" id="palette" hidden>
+        <div class="palette-backdrop" data-close></div>
+        <div class="palette-box glass" role="dialog" aria-modal="true" aria-labelledby="paletteInput">
+            <div class="palette-row">
+                <span class="palette-prompt" aria-hidden="true">›</span>
+                <input id="paletteInput" type="text" autocomplete="off" spellcheck="false" data-i18n-ph="palette.ph" placeholder="Type a command or jump to a section…" role="combobox" aria-expanded="true" aria-controls="paletteList">
+                <kbd>Esc</kbd>
+            </div>
+            <ul class="palette-list" id="paletteList" role="listbox"></ul>
+            <p class="palette-foot" data-i18n="palette.foot">↑ ↓ to move · Enter to run · Esc to close</p>
+        </div>
+    </div>
+
+    <!-- Lab demo window -->
+    <div class="lab-modal" id="labModal" hidden>
+        <div class="lab-backdrop" data-close></div>
+        <div class="lab-window glass" role="dialog" aria-modal="true" aria-labelledby="labTitle">
+            <header class="lab-bar">
+                <span class="lab-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="file-tab" id="labFile" dir="ltr"><i class="file-ico" style="--c:#8466ff">LAB</i>demo.ts</span>
+                <h3 id="labTitle"></h3>
+                <span class="lab-badge" data-i18n="lab.badge">Lab · experimental</span>
+                <button class="lab-close" type="button" data-close data-i18n-aria="lab.close" aria-label="Close">✕</button>
+            </header>
+            <div class="lab-body" id="labBody"></div>
+        </div>
+    </div>
+
+    <main id="top">
+        <!-- Hero: particles assemble into the photo -->
+        <section class="hero" id="hero" data-shape="hero" data-file="index.tsx">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <p class="hero-meta" data-hero>
+                        <span class="chip-live"><span class="dot-live"></span><span data-i18n="hero.status">Available for new roles</span></span>
+                        <span class="hero-clock"><span id="greeting">Hello</span> · <span data-i18n="hero.dubai">Dubai</span> <time id="clock" dir="ltr">--:--</time></span>
+                    </p>
+                    <h1 class="hero-name">
+                        <span class="line"><span class="split" data-i18n="hero.first">Zein Alabdine</span></span>
+                        <span class="line"><em class="split serif" data-i18n="hero.last">Altazah</em></span>
+                    </h1>
+                    <p class="hero-role" data-hero data-i18n="hero.role">Senior AI Software Engineer</p>
+                    <p class="term" data-hero dir="ltr">
+                        <span class="tok-prompt">$</span> <span class="tok-fn">zein</span> <span class="tok-kw">build</span> <span class="tok-str" id="rotator"></span><span class="caret" aria-hidden="true"></span>
+                    </p>
+                    <div class="hero-cta" data-hero>
+                        <a href="#work" class="btn btn-primary" data-magnetic><span data-i18n="hero.cta1">View my work</span><span class="btn-icon" aria-hidden="true">→</span></a>
+                        <a href="#contact" class="btn btn-ghost" data-magnetic><span data-i18n="hero.cta2">Get in touch</span></a>
+                        <a href="assets/cv/Zein-Alabdine-Altazah-CV.pdf" download class="btn btn-link" data-magnetic><svg class="dl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span data-i18n="cv.download">Download CV</span></a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <button class="pose" id="pose" type="button" aria-label="Change pose">
+                        <img class="pose-img" id="poseImg" src="assets/zein-hero-cut.webp" alt="Zein Alabdine Altazah" data-i18n-alt="name.full" width="547" height="1069" fetchpriority="high">
+                    </button>
+                    <p class="bubble glass" id="bubble" aria-live="polite"></p>
+                    <button class="pose-hint" id="poseHint" type="button">
+                        <span class="ripple" aria-hidden="true"></span><span class="ripple r2" aria-hidden="true"></span>
+                        <span class="hint-ico" aria-hidden="true">✦</span><span data-i18n="hero.hint">Click me — watch me rebuild</span>
+                    </button>
+                </div>
+            </div>
+            <a href="#statement" class="scroll-cue" aria-label="Scroll down">
+                <span data-i18n="hero.scroll">Scroll</span>
+                <span class="scroll-line" aria-hidden="true"></span>
+            </a>
+        </section>
+
+        <!-- Statement, written as a doc comment -->
+        <section class="statement" id="statement" data-shape="wave" data-file="README.md">
+            <div class="statement-pin">
+                <p class="eyebrow"><span class="eyebrow-num">00</span><span data-i18n="statement.label">In short</span></p>
+                <p class="doc-mark" aria-hidden="true">/**</p>
+                <p class="statement-text scrub" data-i18n="statement.text">I take AI products from a blank page to the App Store — architecture, backend, interface and the models that make them smart — and keep them running long after launch.</p>
+                <p class="doc-mark" aria-hidden="true">&nbsp;*/</p>
+                <dl class="stats">
+                    <div class="stat"><dt data-i18n="stats.api">API endpoints</dt><dd><span data-count="250">0</span>+</dd></div>
+                    <div class="stat"><dt data-i18n="stats.models">Data models</dt><dd><span data-count="55">0</span></dd></div>
+                    <div class="stat"><dt data-i18n="stats.tests">Automated tests</dt><dd><span data-count="6500">0</span>+</dd></div>
+                    <div class="stat"><dt data-i18n="stats.platforms">Platforms shipped</dt><dd><span data-count="3">0</span></dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- Work: horizontal on desktop -->
+        <section class="work" id="work" data-shape="torus" data-file="onsta/README.md">
+            <div class="work-pin">
+                <div class="work-head">
+                    <p class="eyebrow"><span class="eyebrow-num">01</span><span data-i18n="work.label">Selected work</span></p>
+                    <div class="work-progress" aria-hidden="true"><span id="workProgress"></span></div>
+                </div>
+                <div class="hs-track" id="hsTrack">
+                    <article class="panel panel-intro">
+                        <p class="panel-kicker" data-i18n="work.kicker">Case study · 2026</p>
+                        <h2 class="onsta">ONSTA</h2>
+                        <p class="panel-lead" data-i18n="work.tagline">AI-powered skin, beauty and wellness platform — live on the App Store, Google Play and the web, in Arabic and English.</p>
+                        <dl class="panel-meta">
+                            <div><dt data-i18n="work.role">Role</dt><dd data-i18n="work.roleVal">Lead engineer, end to end</dd></div>
+                            <div><dt data-i18n="work.company">Company</dt><dd>Helcoo AI</dd></div>
+                            <div><dt data-i18n="work.status">Status</dt><dd><span class="dot-live"></span> <span data-i18n="work.statusVal">Live in production</span></dd></div>
+                        </dl>
+                        <div class="panel-actions">
+                            <a href="https://onsta.ai" target="_blank" rel="noopener" class="btn btn-primary" data-magnetic data-cursor="work.visit"><span data-i18n="work.visit">Visit onsta.ai</span><span class="btn-icon" aria-hidden="true">↗</span></a>
+                            <a href="https://apps.apple.com/ae/app/onsta/id6801993828" target="_blank" rel="noopener" class="store" data-magnetic>App Store <span aria-hidden="true">↗</span></a>
+                            <a href="https://play.google.com/store/apps/details?id=ae.onsta.app" target="_blank" rel="noopener" class="store" data-magnetic>Google Play <span aria-hidden="true">↗</span></a>
+                        </div>
+                        <span class="swipe-hint"><span data-i18n="work.hint">Keep scrolling to explore the system</span> <span class="hint-arrow" aria-hidden="true">→</span></span>
+                    </article>
+
+                    <!-- Real screens from the shipping app (mock data, demo account); the language follows the site -->
+                    <!-- One iPhone in 3D (CSS transforms): drag to turn it 360°, tap its tabs to move through ONSTA -->
+                    <article class="panel panel-phones">
+                        <div class="p3" id="p3" tabindex="0" role="group" data-i18n-aria="p3.label" aria-label="ONSTA on an iPhone — drag or use the arrow keys to rotate">
+                            <div class="p3-body" id="p3Body">
+                                <span class="p3-layer" style="--z:-6"></span><span class="p3-layer" style="--z:-4"></span><span class="p3-layer" style="--z:-2"></span><span class="p3-layer" style="--z:0"></span><span class="p3-layer" style="--z:2"></span><span class="p3-layer" style="--z:4"></span><span class="p3-layer" style="--z:6"></span>
+                                <div class="p3-back" aria-hidden="true"><span class="p3-cam"><i></i><i></i><i></i></span><img class="p3-logo" src="assets/onsta/icon.jpg" alt="" draggable="false"></div>
+                                <div class="p3-front">
+                                    <div class="p3-screen">
+                                    <img data-shot="home" class="is-on" src="assets/onsta/en-home.webp" alt="ONSTA — Home screen" data-i18n-alt="onsta.altHome" width="780" height="1688" loading="lazy" draggable="false">
+                                    <img data-shot="ai" class="" src="assets/onsta/en-ai.webp" alt="ONSTA — Smart mirror" data-i18n-alt="onsta.altAi" width="780" height="1688" loading="lazy" draggable="false">
+                                    <img data-shot="report" class="" src="assets/onsta/en-report.webp" alt="ONSTA — Skin analysis report" data-i18n-alt="onsta.altReport" width="780" height="1688" loading="lazy" draggable="false">
+                                    <img data-shot="profile" class="" src="assets/onsta/en-profile.webp" alt="ONSTA — Account" data-i18n-alt="onsta.altProfile" width="780" height="1688" loading="lazy" draggable="false">
+                                        <div class="p3-hot">
+                                            <button type="button" data-go="home" data-i18n-aria="p3.home" aria-label="Home"></button>
+                                            <button type="button" data-go="ai" data-i18n-aria="p3.ai" aria-label="Smart mirror"></button>
+                                            <button type="button" data-go="profile" data-i18n-aria="p3.profile" aria-label="Account"></button>
+                                        </div>
+                                        <span class="p3-island" aria-hidden="true"></span>
+                                        <span class="p3-glare" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="p3-shadow" aria-hidden="true"></span>
+                        </div>
+                        <div class="p3-tabs" role="tablist" data-i18n-aria="p3.tabs" aria-label="ONSTA screens">
+                            <button type="button" role="tab" data-go="home" aria-selected="true" data-i18n="p3.home">Home</button>
+                            <button type="button" role="tab" data-go="ai" aria-selected="false" data-i18n="p3.ai">Smart mirror</button>
+                            <button type="button" role="tab" data-go="report" aria-selected="false" data-i18n="p3.report">Report</button>
+                            <button type="button" role="tab" data-go="profile" aria-selected="false" data-i18n="p3.profile">Account</button>
+                            <button type="button" class="p3-spin" id="p3Spin" data-i18n-aria="p3.spin" aria-label="Spin 360°">360°</button>
+                        </div>
+                        <p class="phones-note"><span data-i18n="p3.hint">Drag to rotate · tap the tabs</span> · <span data-i18n="onsta.note">Screens from the shipping app · demo account</span></p>
+                    </article>
+
+                    <article class="panel layer">
+                        <header class="layer-top"><span class="file-tab"><i class="file-ico" style="--c:#3b9eff">TSX</i>App.tsx</span><p class="layer-stat"><span>3</span><small data-i18n="layer.client.stat">platforms, one codebase</small></p></header>
+                        <h3 class="layer-name" data-i18n="arch.client">Client</h3>
+                        <p class="layer-desc" data-i18n="work.b1">One React + TypeScript codebase shipped as a PWA and to iOS and Android with Capacitor, with on-device MediaPipe face and hand tracking for hands-free guided photo capture.</p>
+                        <ul class="tags"><li>React</li><li>TypeScript</li><li>Capacitor</li><li>MediaPipe</li><li>PWA</li></ul>
+                    </article>
+                    <article class="panel layer">
+                        <header class="layer-top"><span class="file-tab"><i class="file-ico" style="--c:#2f7fd8">TS</i>server.ts</span><p class="layer-stat"><span>250+</span><small data-i18n="layer.api.stat">API endpoints</small></p></header>
+                        <h3 class="layer-name" data-i18n="arch.api">API</h3>
+                        <p class="layer-desc" data-i18n="work.b2">A Fastify backend with JWT auth and Google and Apple sign-in, Stripe and RevenueCat subscriptions, and push notifications across web and mobile.</p>
+                        <ul class="tags"><li>Fastify</li><li>JWT · OAuth</li><li>Stripe</li><li>RevenueCat</li><li>FCM</li></ul>
+                    </article>
+                    <article class="panel layer">
+                        <header class="layer-top"><span class="file-tab"><i class="file-ico" style="--c:#8b8fff">◆</i>schema.prisma</span><p class="layer-stat"><span>55</span><small data-i18n="layer.data.stat">data models</small></p></header>
+                        <h3 class="layer-name" data-i18n="arch.data">Data</h3>
+                        <p class="layer-desc" data-i18n="work.b3">PostgreSQL (Aurora) with 55 data models through Prisma, and Redis (ElastiCache) for caching and fast-moving state.</p>
+                        <ul class="tags"><li>PostgreSQL</li><li>Prisma</li><li>Redis</li></ul>
+                    </article>
+                    <article class="panel layer layer-ai">
+                        <header class="layer-top"><span class="file-tab"><i class="file-ico" style="--c:#8466ff">✦</i>gemini.ts</span><p class="layer-stat"><span>AI</span><small data-i18n="layer.ai.stat">at the core</small></p></header>
+                        <h3 class="layer-name" data-i18n="arch.ai">Intelligence</h3>
+                        <p class="layer-desc" data-i18n="work.b4">Google Gemini, through a Python analysis service, writes the face, hand-and-nail and body reports, plus AI age checks, generated avatars and voice dictation.</p>
+                        <ul class="tags"><li>Google Gemini</li><li>Python</li><li>OpenAI</li></ul>
+                    </article>
+                    <article class="panel layer">
+                        <header class="layer-top"><span class="file-tab"><i class="file-ico" style="--c:#e5484d">YML</i>deploy.yml</span><p class="layer-stat"><span>6,500+</span><small data-i18n="layer.infra.stat">automated tests</small></p></header>
+                        <h3 class="layer-name" data-i18n="arch.infra">Infrastructure</h3>
+                        <p class="layer-desc" data-i18n="work.b5">AWS ECS Fargate, Aurora, ElastiCache, S3/CloudFront, SES and SNS, shipped with Docker and GitHub Actions: health-checked releases, a rollback workflow, Sentry monitoring and 6,500+ automated tests.</p>
+                        <ul class="tags"><li>AWS</li><li>Docker</li><li>GitHub Actions</li><li>Sentry</li><li>Vitest</li></ul>
+                    </article>
+                    <article class="panel layer">
+                        <header class="layer-top"><span class="file-tab"><i class="file-ico" style="--c:#2fbf6c">TSX</i>dashboard.tsx</span><p class="layer-stat"><span>AR/EN</span><small data-i18n="layer.admin.stat">bilingual dashboard</small></p></header>
+                        <h3 class="layer-name" data-i18n="arch.admin">Admin</h3>
+                        <p class="layer-desc" data-i18n="work.b6">A bilingual admin dashboard: KPIs, AI-scan failures and costs, subscriptions, a user map with push campaigns, live support and an audit log.</p>
+                        <ul class="tags"><li>KPIs</li><li>Push campaigns</li><li>Live support</li><li>Audit log</li></ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lab: experimental projects that run in the browser -->
+        <section class="section lab" id="lab" data-shape="scatter" data-file="lab/README.md">
+            <div class="container">
+                <p class="eyebrow"><span class="eyebrow-num">02</span><span data-i18n="lab.label">Lab</span></p>
+                <h2 class="title type" data-i18n-html="lab.title">Things I <em class="serif">built to explore</em>.</h2>
+                <p class="lab-lead" data-anim data-i18n="lab.lead">Experimental projects built for this portfolio — not client work. Each one runs right here in your browser; open it and try it.</p>
+                <div class="lab-grid">
+                    <article class="lab-card spot" data-anim>
+                        <header class="lab-card-top"><span class="lab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 6.5h15v9.5h-9l-4.5 3.5v-3.5h-1.5z"/><path d="M8.5 10.5h7M8.5 13h4"/></svg></span><span class="file-tab">assistant.ts</span></header>
+                        <h3 data-i18n="lab.chat.t">Arabic support assistant</h3>
+                        <p data-i18n="lab.chat.d">Understands Levantine, Gulf and standard Arabic: quotes transfer fees, tracks a transfer and answers branch questions.</p>
+                        <ul class="tags"><li>NLU</li><li>Arabic</li><li>Dialects</li></ul>
+                        <button class="lab-open" type="button" data-lab="chat"><span data-i18n="lab.open">Open demo</span> <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="lab-card spot" data-anim>
+                        <header class="lab-card-top"><span class="lab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><circle cx="12" cy="12" r="3.5"/></svg></span><span class="file-tab">capture.ts</span></header>
+                        <h3 data-i18n="lab.capture.t">Hands-free capture</h3>
+                        <p data-i18n="lab.capture.d">MediaPipe face landmarks run on your device and take the photo by themselves once you are framed and still.</p>
+                        <ul class="tags"><li>MediaPipe</li><li>Computer vision</li><li>On-device</li></ul>
+                        <button class="lab-open" type="button" data-lab="capture"><span data-i18n="lab.open">Open demo</span> <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="lab-card spot" data-anim>
+                        <header class="lab-card-top"><span class="lab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M7.5 15.5v-3M11.5 15.5v-6M15.5 15.5V11"/></svg></span><span class="file-tab">dashboard.tsx</span></header>
+                        <h3 data-i18n="lab.dashboard.t">Live admin dashboard</h3>
+                        <p data-i18n="lab.dashboard.d">A streaming, bilingual dashboard: KPIs, AI cost by report, users by city and an event feed.</p>
+                        <ul class="tags"><li>Canvas</li><li>Real-time</li><li>i18n</li></ul>
+                        <button class="lab-open" type="button" data-lab="dashboard"><span data-i18n="lab.open">Open demo</span> <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="lab-card spot" data-anim>
+                        <header class="lab-card-top"><span class="lab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="2"/><circle cx="5.5" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18.5" cy="18" r="2"/><path d="M12 7.5v8.5M12 11h-6.5v5M12 11h6.5v5"/></svg></span><span class="file-tab">netmon.ts</span></header>
+                        <h3 data-i18n="lab.network.t">Branch network monitor</h3>
+                        <p data-i18n="lab.network.d">Routers, PCs, printers and cameras of a branch on one live map, with alerts and one-click diagnostics.</p>
+                        <ul class="tags"><li>Networking</li><li>SVG</li><li>Monitoring</li></ul>
+                        <button class="lab-open" type="button" data-lab="network"><span data-i18n="lab.open">Open demo</span> <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="lab-card spot" data-anim>
+                        <header class="lab-card-top"><span class="lab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></span><span class="file-tab">rtl.css</span></header>
+                        <h3 data-i18n="lab.rtl.t">RTL / LTR playground</h3>
+                        <p data-i18n="lab.rtl.d">The same card built two ways — flip the direction and see why logical CSS is how Arabic interfaces stay correct.</p>
+                        <ul class="tags"><li>RTL</li><li>CSS</li><li>Arabic UI</li></ul>
+                        <button class="lab-open" type="button" data-lab="rtl"><span data-i18n="lab.open">Open demo</span> <span aria-hidden="true">→</span></button>
+                    </article>
+                    <article class="lab-card spot" data-anim>
+                        <header class="lab-card-top"><span class="lab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5v17M16 7.5c-.6-1.4-2.1-2-4-2-2.4 0-4 1.2-4 3s1.6 2.6 4 3 4 1.3 4 3.2-1.6 3-4 3c-2 0-3.5-.7-4.2-2.2"/></svg></span><span class="file-tab">cost.ts</span></header>
+                        <h3 data-i18n="lab.cost.t">AI cost calculator</h3>
+                        <p data-i18n="lab.cost.d">Model the monthly bill of an AI feature from traffic, token sizes and caching, across small, mid and large models.</p>
+                        <ul class="tags"><li>LLM</li><li>Tokens</li><li>Pricing</li></ul>
+                        <button class="lab-open" type="button" data-lab="cost"><span data-i18n="lab.open">Open demo</span> <span aria-hidden="true">→</span></button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="section about" id="about" data-shape="ring" data-file="about.md">
+            <div class="container about-grid">
+                <figure class="frame about-frame" id="aboutFrame" data-anim>
+                    <img src="assets/zein-portrait-cut.webp" alt="Portrait of Zein" data-i18n-alt="about.alt" width="344" height="1004" loading="lazy">
+                </figure>
+                <div class="about-copy">
+                    <p class="eyebrow"><span class="eyebrow-num">03</span><span data-i18n="about.label">About</span></p>
+                    <h2 class="title type" data-i18n-html="about.title">Engineer by trade, <em class="serif">builder</em> by habit.</h2>
+                    <p class="about-p" data-anim data-i18n="about.p1">Most of my work sits where product engineering meets applied AI. I design the data model, write the API, build the interface, wire in the models that make it smart, and set up the pipeline that keeps it running.</p>
+                    <p class="about-p" data-anim data-i18n="about.p2">Before ONSTA I spent years freelancing — custom web and mobile apps, chatbots and LLM-driven workflows for clients in Syria and Dubai — and leading IT support for critical infrastructure. That mix taught me to care about reliability as much as features.</p>
+                    <dl class="facts" data-anim>
+                        <div><dt data-i18n="facts.based">Based in</dt><dd data-i18n="facts.basedVal">Dubai, UAE</dd></div>
+                        <div><dt data-i18n="facts.lang">Languages</dt><dd data-i18n="facts.langVal">Arabic, English</dd></div>
+                        <div><dt data-i18n="facts.open">Open to</dt><dd data-i18n="facts.openVal">Full-time, freelance, collaborations</dd></div>
+                    </dl>
+                    <dl class="facts edu" data-anim>
+                        <div><dt data-i18n="edu.mech">Mechatronics Engineering · 2018–2024</dt><dd data-i18n="edu.mechVal">Tishreen University, Latakia — coursework completed</dd></div>
+                        <div><dt data-i18n="edu.it">Bachelor of Information Technology · in progress</dt><dd data-i18n="edu.itVal">Syrian Virtual University</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toolkit -->
+        <section class="section skills" id="skills" data-shape="galaxy" data-file="toolkit.json">
+            <div class="container">
+                <p class="eyebrow"><span class="eyebrow-num">04</span><span data-i18n="skills.label">Toolkit</span></p>
+                <h2 class="title type" data-i18n-html="skills.title">The tools I <em class="serif">reach for</em>.</h2>
+                <div class="bento">
+                    <div class="card spot card-ai" data-anim><span class="card-icon" aria-hidden="true">✦</span><h3 data-i18n="skills.ai">AI</h3><p data-i18n="skills.aiDesc">Gemini and OpenAI in production — analysis, generation, voice and agents.</p><ul class="tags"><li>Google Gemini</li><li>OpenAI</li><li>LLM integration</li><li>Prompt engineering</li><li>Computer vision</li><li>AI chatbots</li></ul></div>
+                    <div class="card spot" data-anim><span class="card-icon" aria-hidden="true">{ }</span><h3 data-i18n="skills.lang">Languages</h3><ul class="tags"><li>TypeScript</li><li>JavaScript</li><li>Python</li><li>SQL</li><li>C++</li><li>Java</li><li>Bash</li></ul></div>
+                    <div class="card spot" data-anim><span class="card-icon" aria-hidden="true">&lt;/&gt;</span><h3 data-i18n="skills.front">Frontend &amp; mobile</h3><ul class="tags"><li>React</li><li>Redux Toolkit</li><li>Tailwind CSS</li><li>Vite</li><li>PWA</li><li>Capacitor</li><li>i18n · RTL</li></ul></div>
+                    <div class="card spot" data-anim><span class="card-icon" aria-hidden="true">⌗</span><h3 data-i18n="skills.back">Backend &amp; data</h3><ul class="tags"><li>Node.js</li><li>Fastify</li><li>REST</li><li>JWT · OAuth</li><li>Prisma</li><li>PostgreSQL</li><li>Redis</li><li>MySQL</li></ul></div>
+                    <div class="card spot" data-anim><span class="card-icon" aria-hidden="true">☁</span><h3 data-i18n="skills.cloud">Cloud &amp; DevOps</h3><ul class="tags"><li>AWS ECS</li><li>Aurora</li><li>ElastiCache</li><li>S3 · CloudFront</li><li>Docker</li><li>GitHub Actions</li><li>Linux</li><li>Sentry</li></ul></div>
+                    <div class="card spot" data-anim><span class="card-icon" aria-hidden="true">✓</span><h3 data-i18n="skills.test">Integrations &amp; testing</h3><ul class="tags"><li>Stripe</li><li>RevenueCat</li><li>Firebase Messaging</li><li>Web Push</li><li>Vitest</li><li>Playwright</li><li>Claude Code</li></ul></div>
+                </div>
+            </div>
+            <div class="marquee" aria-hidden="true" dir="ltr">
+                <div class="marquee-row" data-speed="1"><span>React</span><span>TypeScript</span><span>Node.js</span><span>Fastify</span><span>PostgreSQL</span><span>Prisma</span><span>Redis</span><span>Gemini</span><span>OpenAI</span><span>AWS</span></div>
+                <div class="marquee-row" data-speed="-1"><span>Capacitor</span><span>MediaPipe</span><span>Docker</span><span>Stripe</span><span>Vitest</span><span>Playwright</span><span>Sentry</span><span>Tailwind</span><span>Python</span><span>SQL</span></div>
+            </div>
+        </section>
+
+        <!-- Experience, as a git log -->
+        <section class="section experience" id="experience" data-shape="helix" data-file="career.log">
+            <div class="container exp-grid">
+                <div class="exp-side">
+                    <p class="eyebrow"><span class="eyebrow-num">05</span><span data-i18n="exp.label">Experience</span></p>
+                    <h2 class="title type" data-i18n-html="exp.title">Where I've <em class="serif">shipped</em>.</h2>
+                    <button class="award" id="award" type="button" data-anim data-cursor="award.cursor">
+                        <span class="award-photo"><img src="assets/zein-celebrate-cut.webp" alt="" width="522" height="988" loading="lazy"></span>
+                        <span class="award-text">
+                            <span class="award-kicker" data-i18n="award.eyebrow">Recognition</span>
+                            <span class="award-title" data-i18n="award.title">Employee of the Year</span>
+                            <span class="award-org" data-i18n="award.org">Al-Fouad Money Transfer</span>
+                            <span class="award-hint" data-i18n="award.hint">Tap to celebrate 🎉</span>
+                        </span>
+                    </button>
+                </div>
+                <div class="exp-log">
+                    <p class="term term-sm" dir="ltr" data-anim><span class="tok-prompt">$</span> <span class="tok-fn">git</span> <span class="tok-kw">log</span> <span class="tok-flag">--career</span></p>
+                    <div class="timeline" id="timeline">
+                        <span class="timeline-fill" id="timelineFill" aria-hidden="true"></span>
+                        <ol>
+                            <li class="job" data-anim>
+                                <p class="commit" dir="ltr"><span class="hash">a3f9c21</span><span class="ref">HEAD → main</span></p>
+                                <p class="job-date" data-i18n="exp.j1.date">May 2026 — Present</p>
+                                <h3 class="job-title" data-i18n="exp.j1.title">Senior AI Software Engineer</h3>
+                                <p class="job-org" data-i18n="exp.j1.org">Helcoo AI · Dubai</p>
+                                <p class="job-desc" data-i18n="exp.j1.desc">Led the end-to-end build and launch of ONSTA across web, iOS and Android — architecture, backend, AI integrations, admin tooling, infrastructure and a 6,500+ test suite.</p>
+                            </li>
+                            <li class="job" data-anim>
+                                <p class="commit" dir="ltr"><span class="hash">7be04d8</span><span class="ref ref-alt">freelance</span></p>
+                                <p class="job-date" data-i18n="exp.j2.date">2021 — Present</p>
+                                <h3 class="job-title" data-i18n="exp.j2.title">Freelance Software Developer</h3>
+                                <p class="job-org" data-i18n="exp.j2.org">Self-employed · Syria / Dubai</p>
+                                <p class="job-desc" data-i18n="exp.j2.desc">Custom web and mobile apps, AI chatbots, LLM integrations and automated workflows — delivered end to end, from discovery through deployment and maintenance.</p>
+                            </li>
+                            <li class="job" data-anim>
+                                <p class="commit" dir="ltr"><span class="hash">1c62e9f</span></p>
+                                <p class="job-date" data-i18n="exp.j3.date">2024 — 2026</p>
+                                <h3 class="job-title" data-i18n="exp.j3.title">IT Support Lead / Head Technician</h3>
+                                <p class="job-org" data-i18n="exp.j3.org">Crypto Miners AE · Dubai</p>
+                                <p class="job-desc" data-i18n="exp.j3.desc">Kept critical infrastructure at maximum uptime; owned access control, surveillance and hardware diagnostics, and handled complex escalations.</p>
+                            </li>
+                            <li class="job" data-anim>
+                                <p class="commit" dir="ltr"><span class="hash">5d2a7b0</span><span class="ref ref-award">★ employee-of-the-year</span></p>
+                                <p class="job-date" data-i18n="exp.j4.date">Jun 2023 — Jun 2024</p>
+                                <h3 class="job-title" data-i18n="exp.j4.title">Supervisor &amp; IT Lead</h3>
+                                <p class="job-org" data-i18n="exp.j4.org">Al-Fouad Money Transfer · Syria</p>
+                                <p class="job-desc" data-i18n="exp.j4.desc">Supervised the centre's team and organised its daily operations, and owned its IT end to end: the network, surveillance cameras, systems and equipment — computers, laptops and printers. Named Employee of the Year.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact: particles rebuild Zein, pointing at the visitor -->
+        <section class="section contact" id="contact" data-shape="contact" data-file="contact.ts">
+            <div class="container">
+                <p class="eyebrow"><span class="eyebrow-num">06</span><span data-i18n="contact.label">Contact</span></p>
+                <h2 class="contact-title"><span class="type" data-i18n="contact.t1">Let's build</span> <em class="type serif" data-i18n="contact.t2">something great.</em></h2>
+                <div class="contact-grid">
+                    <aside class="contact-aside">
+                        <figure class="frame contact-frame" id="contactFrame">
+                            <img src="assets/zein-pointing-cut.webp" alt="Zein pointing toward the visitor" data-i18n-alt="contact.alt" width="323" height="1031" loading="lazy">
+                        </figure>
+                        <div class="email-row" data-anim>
+                            <a class="contact-email" href="mailto:zeinalabdinealtazah@gmail.com" data-cursor="contact.mail">zeinalabdinealtazah@gmail.com</a>
+                            <button class="copy-btn" id="copyEmail" type="button" data-magnetic data-i18n="contact.copy">Copy</button>
+                        </div>
+                        <ul class="socials" data-anim>
+                            <li><a href="https://linkedin.com/in/zein-al-abdine-al-tazah-7344b4281" target="_blank" rel="noopener" data-magnetic>LinkedIn <span aria-hidden="true">↗</span></a></li>
+                            <li><a href="https://wa.me/971567979912" target="_blank" rel="noopener" data-magnetic>WhatsApp <span aria-hidden="true">↗</span></a></li>
+                            <li><a href="tel:+971567979912" dir="ltr" data-magnetic>+971 56 797 9912</a></li>
+                            <li><a href="assets/cv/Zein-Alabdine-Altazah-CV.pdf" download data-magnetic><svg class="dl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span data-i18n="cv.short">CV · PDF</span></a></li>
+                        </ul>
+                    </aside>
+
+                    <form class="contact-form spot" id="contactForm" data-anim novalidate>
+                        <div class="form-tab" dir="ltr"><span class="file-tab"><i class="file-ico" style="--c:#2f7fd8">TS</i>new-message.ts</span><span class="form-dot" aria-hidden="true"></span></div>
+                        <p class="form-q" data-i18n="form.q">What brings you here?</p>
+                        <div class="choices" role="radiogroup">
+                            <label class="choice"><input type="radio" name="topic" value="hiring" checked><span data-i18n="form.hiring">I'm hiring</span></label>
+                            <label class="choice"><input type="radio" name="topic" value="project"><span data-i18n="form.project">A freelance project</span></label>
+                            <label class="choice"><input type="radio" name="topic" value="collab"><span data-i18n="form.collab">A collaboration</span></label>
+                            <label class="choice"><input type="radio" name="topic" value="hi"><span data-i18n="form.hi">Just saying hello</span></label>
+                        </div>
+                        <label class="field"><span data-i18n="form.name">Your name</span><input type="text" name="name" autocomplete="name" required></label>
+                        <label class="field"><span data-i18n="form.msg">Message</span><textarea name="message" rows="5" required></textarea></label>
+                        <button type="submit" class="btn btn-primary" data-magnetic><span data-i18n="form.send">Send message</span><span class="btn-icon" aria-hidden="true">→</span></button>
+                        <p class="form-note" data-i18n="form.note">Opens your email app with everything filled in.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <a href="#top" class="footer-brand" aria-label="Zein Altazah"><svg class="logo-mark" viewBox="36 48 774 372" aria-hidden="true"><use href="#zm-mark"/></svg><svg class="logo-text" viewBox="0 0 513 100" aria-hidden="true"><use href="#zm-word"/></svg></a>
+                <p class="tagline" dir="ltr">BUILD<i>•</i>DEVELOP<i>•</i>INNOVATE</p>
+                <p>© <span id="year">2026</span> <span data-i18n="name.full">Zein Alabdine Altazah</span></p>
+            </div>
+            <p class="footer-mid" data-i18n="footer.made">Designed &amp; built in Dubai</p>
+            <a href="#top" class="to-top" data-magnetic><span data-i18n="footer.top">Back to top</span> ↑</a>
+        </div>
+    </footer>
+
+    <!-- Editor status bar -->
+    <div class="statusbar glass" id="statusbar" aria-hidden="true">
+        <div class="sb-group">
+            <span class="sb-item sb-branch"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="6" r="2"/><circle cx="6.5" cy="18" r="2"/><circle cx="17.5" cy="9" r="2"/><path d="M6.5 8v8M17.5 11c0 3-4 3.5-9.4 6"/></svg>main</span>
+            <span class="sb-item sb-ok"><span class="sb-dot"></span><span data-i18n="sb.ok">0 problems</span></span>
+        </div>
+        <div class="sb-group">
+            <span class="sb-item" id="sbFile">index.tsx</span>
+            <span class="sb-item" id="sbLine">Ln 1, Col 1</span>
+            <span class="sb-item">UTF-8</span>
+            <span class="sb-item" id="sbLang">EN</span>
+            <span class="sb-item" id="sbTheme"></span>
+            <span class="sb-item" id="sbTime">Dubai --:--</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="assets/portraits.js"></script>
+    <script src="app.js"></script>
+    <script src="lab.js"></script>
+</body>
+</html>
