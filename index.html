@@ -100,7 +100,7 @@
                 <input id="paletteInput" type="text" autocomplete="off" spellcheck="false" data-i18n-ph="palette.ph" placeholder="Type a command or jump to a section…" role="combobox" aria-expanded="true" aria-controls="paletteList">
                 <kbd>Esc</kbd>
             </div>
-            <ul class="palette-list" id="paletteList" role="listbox"></ul>
+            <ul class="palette-list" id="paletteList" role="listbox" data-lenis-prevent></ul>
             <p class="palette-foot" data-i18n="palette.foot">↑ ↓ to move · Enter to run · Esc to close</p>
         </div>
     </div>
@@ -116,7 +116,7 @@
                 <span class="lab-badge" data-i18n="lab.badge">Lab · experimental</span>
                 <button class="lab-close" type="button" data-close data-i18n-aria="lab.close" aria-label="Close">✕</button>
             </header>
-            <div class="lab-body" id="labBody"></div>
+            <div class="lab-body" id="labBody" data-lenis-prevent></div>
         </div>
     </div>
 

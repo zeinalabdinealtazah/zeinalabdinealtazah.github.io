@@ -992,7 +992,7 @@ html[dir="rtl"] .lab-open span[aria-hidden] { transform: scaleX(-1); display: in
 
 /* the window is a fixed-size app frame */
 .lab-window { height: min(90svh, 820px); width: min(100%, 1180px); }
-.lab-body { flex: 1; min-height: 0; padding: clamp(12px, 1.8vw, 20px); overflow: auto; }
+.lab-body { flex: 1; min-height: 0; padding: clamp(12px, 1.8vw, 20px); overflow: auto; overscroll-behavior: contain; }
 .lab-body > div { min-height: 100%; }
 
 /* ---------- 1 · Wasel assistant ---------- */
