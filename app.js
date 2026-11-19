@@ -27,7 +27,7 @@ const AR = {
     'hero.dubai': 'دبي',
     'hero.first': 'زين العابدين',
     'hero.last': 'التزه',
-    'hero.role': 'مهندس برمجيات أول في الذكاء الاصطناعي',
+    'hero.role': 'مهندس برمجيات متكامل · تطبيقات الذكاء الاصطناعي',
     'hero.cta1': 'استعرض أعمالي',
     'hero.cta2': 'تواصل معي',
     'hero.scroll': 'مرّر',
@@ -37,18 +37,18 @@ const AR = {
     'statement.label': 'باختصار',
     'statement.text': 'أنقل منتجات الذكاء الاصطناعي من الفكرة الأولى إلى متاجر التطبيقات — المعمارية والخادم والواجهة والنماذج التي تمنحها ذكاءها — وأواصل رعايتها بعد الإطلاق بوقت طويل.',
     'stats.api': 'نقطة اتصال API',
-    'stats.models': 'نموذج بيانات',
+    'stats.years': 'سنوات في بناء البرمجيات',
     'stats.tests': 'اختبار آلي',
     'stats.platforms': 'منصات أُطلق عليها',
 
     'work.label': 'أعمال مختارة',
     'work.kicker': 'دراسة حالة · 2026',
     'work.role': 'الدور',
-    'work.roleVal': 'المهندس الرئيسي من البداية إلى النهاية',
-    'work.company': 'الشركة',
+    'work.roleVal': 'مطوّر برمجيات · Full-stack',
+    'work.period': 'الفترة',
+    'work.periodVal': 'مايو — نوفمبر 2026',
     'work.status': 'الحالة',
-    'work.statusVal': 'يعمل في بيئة الإنتاج',
-    'work.visit': 'زيارة onsta.ai',
+    'work.statusVal': 'أُطلقت في بيئة الإنتاج',
     'work.hint': 'تابع التمرير لاستكشاف بنية النظام',
     'arch.client': 'الواجهة',
     'arch.api': 'واجهة API',
@@ -57,7 +57,7 @@ const AR = {
     'arch.infra': 'البنية التحتية',
     'layer.client.stat': 'منصات بقاعدة كود واحدة',
     'layer.api.stat': 'نقطة اتصال API',
-    'layer.data.stat': 'نموذج بيانات',
+    'layer.data.stat': 'PostgreSQL و Redis',
     'layer.ai.stat': 'في صميم المنتج',
     'layer.infra.stat': 'اختبار آلي',
 
@@ -65,7 +65,7 @@ const AR = {
     'about.title': 'مهندسٌ بالمهنة، <em class="serif">وصانعٌ</em> بالفطرة.',
     'about.alt': 'صورة شخصية لزين',
     'about.p1': 'يقع معظم عملي حيث تلتقي هندسة المنتجات بالذكاء الاصطناعي التطبيقي: أصمّم نموذج البيانات، وأكتب الواجهات البرمجية، وأبني الواجهة، وأدمج النماذج التي تمنح المنتج ذكاءه، وأُعدّ المنظومة التي تُبقيه يعمل.',
-    'about.p2': 'قبل ONSTA عملتُ سنوات مستقلاً — تطبيقات ويب وجوال مخصّصة، وروبوتات محادثة، وأتمتة قائمة على النماذج اللغوية لعملاء في سوريا ودبي — كما قُدت الدعم التقني لبنية تحتية حساسة. علّمني هذا المزيج أن أهتم بالموثوقية بقدر اهتمامي بالمزايا.',
+    'about.p2': 'قبل Helcoo AI عملتُ سنوات مستقلاً — تطبيقات ويب وجوال مخصّصة، وروبوتات محادثة، وأتمتة قائمة على النماذج اللغوية لعملاء في سوريا ودبي — كما قُدت الدعم التقني لبنية تحتية حساسة. علّمني هذا المزيج أن أهتم بالموثوقية بقدر اهتمامي بالمزايا.',
     'facts.based': 'مقيم في',
     'facts.basedVal': 'دبي، الإمارات العربية المتحدة',
     'facts.lang': 'اللغات',
@@ -76,7 +76,7 @@ const AR = {
     'skills.label': 'الأدوات',
     'skills.title': 'الأدوات التي <em class="serif">أعتمد عليها</em>.',
     'skills.ai': 'الذكاء الاصطناعي',
-    'skills.aiDesc': 'Gemini و OpenAI في بيئة الإنتاج — تحليل وتوليد ومعالجة صوتية ووكلاء أذكياء.',
+    'skills.aiDesc': 'Claude و Gemini و OpenAI في بيئة الإنتاج — تحليل وتوليد ومعالجة صوتية ووكلاء أذكياء. و Claude Code جزء من عملي اليومي، من المعمارية وإعادة الهيكلة إلى الاختبارات ومراجعة الكود.',
     'skills.lang': 'لغات البرمجة',
     'skills.front': 'الواجهات وتطبيقات الجوال',
     'skills.back': 'الخادم والبيانات',
@@ -85,10 +85,10 @@ const AR = {
 
     'exp.label': 'الخبرات',
     'exp.title': 'حيث <em class="serif">أطلقتُ</em> أعمالي.',
-    'exp.j1.date': 'يونيو 2026 — حتى الآن',
-    'exp.j1.title': 'مهندس برمجيات أول في الذكاء الاصطناعي',
+    'exp.j1.date': 'مايو 2026 — نوفمبر 2026',
+    'exp.j1.title': 'مطوّر برمجيات',
     'exp.j1.org': 'Helcoo AI · دبي',
-    'exp.j1.desc': 'قُدتُ بناء ONSTA وإطلاقه بالكامل على الويب و iOS و Android — المعمارية، والخادم، وتكاملات الذكاء الاصطناعي، وأدوات الإدارة، والبنية التحتية، وأكثر من 6,500 اختبار آلي.',
+    'exp.j1.desc': 'بنيتُ تطبيقات مدعومة بالذكاء الاصطناعي وأطلقتها في بيئة الإنتاج على الويب و iOS و Android — خدمات الخادم، وتكامل النماذج اللغوية، ولوحات الإدارة، والبنية التحتية على AWS، وأكثر من 6,500 اختبار آلي.',
     'exp.j2.date': '2021 — حتى الآن',
     'exp.j2.title': 'مطوّر برمجيات مستقل',
     'exp.j2.org': 'عمل حر · سوريا / دبي',
@@ -123,7 +123,6 @@ const AR = {
     'svc.cta': 'اطلب عرض سعر',
     'svc.wa': 'واتساب',
 
-    'work.owner': 'ONSTA منتج تملكه شركة Helcoo AI، بنيتُه خلال عملي فيها بصفة مهندس برمجيات أول في الذكاء الاصطناعي. ليس مشروعاً شخصياً ولا مشروعاً لـ ZM — المنتج والكود والتصاميم والعلامة التجارية ملك لـ Helcoo AI، ويُعرض هنا كخبرة عملية فقط.',
     'contact.label': 'تواصل',
     'contact.t1': 'لنبنِ معاً',
     'contact.t2': 'شيئاً استثنائياً.',
@@ -144,19 +143,15 @@ const AR = {
     'form.note': 'تصل مباشرةً إلى بريدي — وعادةً أردّ خلال يوم.',
     'footer.made': 'صُمّم وطُوّر في دبي',
     'footer.top': 'العودة للأعلى',
-    'work.tagline': 'منصة للعناية بالبشرة والجمال والعافية مدعومة بالذكاء الاصطناعي — متاحة على App Store و Google Play والويب، بالعربية والإنجليزية.',
-    'work.b1': 'قاعدة كود واحدة بـ React و TypeScript تعمل كتطبيق ويب تقدّمي (PWA) وعلى iOS و Android عبر Capacitor، مع تتبّع الوجه واليد على الجهاز نفسه بـ MediaPipe لالتقاط الصور بتوجيه ومن دون لمس.',
+    'work.tagline': 'تطبيقات مدعومة بالذكاء الاصطناعي تعمل في بيئة الإنتاج على الويب و iOS و Android، بالعربية والإنجليزية — من الخادم وخدمات الذكاء الاصطناعي إلى الواجهة والبنية التحتية.',
+    'work.b1': 'قاعدة كود واحدة بـ React و TypeScript تعمل كتطبيق ويب تقدّمي (PWA) وعلى iOS و Android عبر Capacitor، مع مزايا للرؤية الحاسوبية تعمل على الجهاز نفسه بـ MediaPipe.',
     'work.b2': 'خادم مبني بـ Fastify مع مصادقة JWT وتسجيل الدخول بحسابات Google و Apple، واشتراكات عبر Stripe و RevenueCat، وإشعارات فورية على الويب والجوال.',
-    'work.b3': 'قاعدة بيانات PostgreSQL ‏(Aurora) تضم 55 نموذجاً عبر Prisma، مع Redis ‏(ElastiCache) للتخزين المؤقت والبيانات سريعة التغيّر.',
-    'work.b4': 'يكتب Google Gemini، عبر خدمة تحليل مبنية بـ Python، تقارير الوجه واليدين والأظافر والجسم، إضافة إلى التحقق من العمر وإنشاء الصور الرمزية والإملاء الصوتي.',
+    'work.b3': 'قاعدة بيانات PostgreSQL ‏(Aurora) عبر Prisma، مع Redis ‏(ElastiCache) للتخزين المؤقت والبيانات سريعة التغيّر.',
+    'work.b4': 'نماذج لغوية (Google Gemini) مدمجة عبر خدمات مبنية بـ Python للتحليل بالذكاء الاصطناعي وتوليد المحتوى والمزايا الصوتية.',
     'work.b5': 'خدمات ECS Fargate و Aurora و ElastiCache و S3/CloudFront و SES و SNS على AWS، تُنشر عبر Docker و GitHub Actions: إصدارات مع فحوص سلامة، وآلية للتراجع، ومراقبة عبر Sentry، وأكثر من 6,500 اختبار آلي.',
-    'work.b6': 'لوحة إدارة ثنائية اللغة: مؤشرات الأداء، وإخفاقات التحليل بالذكاء الاصطناعي وتكاليفه، والاشتراكات، وخريطة للمستخدمين مع حملات إشعارات، ودعم مباشر، وسجل تدقيق.',
+    'work.b6': 'لوحات إدارة ثنائية اللغة: مؤشرات الأداء، واستخدام الذكاء الاصطناعي وتكاليفه، والاشتراكات، وحملات الإشعارات، والدعم المباشر، وسجلات التدقيق.',
     'arch.admin': 'الإدارة',
-    'layer.admin.stat': 'لوحة ثنائية اللغة',
-    'onsta.note': 'لقطات من التطبيق المنشور · حساب تجريبي',
-    'onsta.altHome': 'الشاشة الرئيسية في ONSTA',
-    'onsta.altReport': 'تقرير تحليل البشرة في ONSTA',
-    'onsta.altProfile': 'شاشة الحساب في ONSTA',
+    'layer.admin.stat': 'لوحات ثنائية اللغة',
     'edu.mech': 'هندسة الميكاترونيكس · 2018–2024',
     'edu.mechVal': 'جامعة تشرين، اللاذقية — أُنجزت المقررات الدراسية',
     'edu.it': 'بكالوريوس تقانة المعلومات · قيد الدراسة',
@@ -165,10 +160,6 @@ const AR = {
     'exp.j4.org': 'الفؤاد للتحويلات المالية · سوريا',
     'exp.j4.desc': 'أشرفتُ على فريق المركز ونظّمت سير العمل اليومي، وتولّيت تقنية المعلومات بالكامل: الشبكة، وكاميرات المراقبة، والأنظمة، وتجهيزات المركز من حواسيب ومحمولات وطابعات. ونلتُ لقب موظف العام.',
     'award.org': 'الفؤاد للتحويلات المالية',
-    'onsta.altAi': 'ONSTA — المرآة الذكية',
-    'p3.home': 'الرئيسية', 'p3.ai': 'المرآة الذكية', 'p3.report': 'التقرير', 'p3.profile': 'الحساب',
-    'p3.spin': 'تدوير 360°', 'p3.tabs': 'شاشات ONSTA', 'p3.hint': 'اسحب للتدوير · وتنقّل بين التبويبات',
-    'p3.label': 'ONSTA على آيفون — اسحب أو استخدم الأسهم للتدوير',
     'exp.j4.date': 'فبراير 2023 — يونيو 2024',
     'nav.lab': 'المختبر',
     'lab.label': 'المختبر',
@@ -202,7 +193,7 @@ const DYN = {
         words: ['AI products', 'mobile apps', 'scalable APIs', 'smart dashboards'],
         // One line per pose: greeting, invitation (pointing), the launch (celebrating), availability (composed).
         bubbles: ["Hello, I'm Zein.", "Have a product in mind? Let's talk.", "Let's make your launch the next win.", 'Open to new roles in Dubai.'],
-        cursor: { 'work.visit': 'Visit ↗', 'award.cursor': '🎉', 'contact.mail': 'Email ✉' },
+        cursor: { 'award.cursor': '🎉', 'contact.mail': 'Email ✉' },
         copied: 'Email copied ✓', copyFail: 'Copy failed — please copy it manually',
         celebrate: 'Thanks for celebrating with me! 🎉',
         formMissing: 'Please add your name, a valid email and a message',
@@ -215,11 +206,11 @@ const DYN = {
         modes: { auto: 'Theme: automatic (by time of day)', light: 'Theme: light', dark: 'Theme: dark' },
         groups: { nav: 'GO TO', act: 'ACTIONS', link: 'LINKS' },
         cmd: {
-            top: 'Home', work: 'Work — ONSTA case study', lab: 'Lab — experimental projects', about: 'About', skills: 'Toolkit', experience: 'Experience', services: 'Services — ZM', contact: 'Contact',
+            top: 'Home', work: 'Work — Helcoo AI case study', lab: 'Lab — experimental projects', about: 'About', skills: 'Toolkit', experience: 'Experience', services: 'Services — ZM', contact: 'Contact',
             themeAuto: 'Theme: automatic (by time of day)', themeLight: 'Theme: light', themeDark: 'Theme: dark',
             cv: 'Download CV (PDF)',
             lang: 'Switch to Arabic', copy: 'Copy email address', rebuild: 'Rebuild my portrait',
-            linkedin: 'Open LinkedIn', whatsapp: 'Message on WhatsApp', onsta: 'Visit onsta.ai',
+            linkedin: 'Open LinkedIn', whatsapp: 'Message on WhatsApp',
         },
         empty: 'No matching commands',
     },
@@ -227,7 +218,7 @@ const DYN = {
         morning: 'صباح الخير', afternoon: 'طاب يومك', evening: 'مساء الخير', night: 'تسهر لوقت متأخر',
         words: ['منتجات الذكاء الاصطناعي', 'تطبيقات الجوال', 'أنظمة قابلة للتوسّع', 'لوحات تحكم ذكية'],
         bubbles: ['مرحباً، أنا زين.', 'لديك فكرة منتج؟ لنتحدث.', 'لنجعل إطلاقك القادم نجاحاً.', 'منفتح على فرص جديدة في دبي.'],
-        cursor: { 'work.visit': 'زيارة ↗', 'award.cursor': '🎉', 'contact.mail': 'راسلني ✉' },
+        cursor: { 'award.cursor': '🎉', 'contact.mail': 'راسلني ✉' },
         copied: 'نُسخ البريد الإلكتروني ✓', copyFail: 'تعذّر النسخ — يُرجى نسخه يدوياً',
         celebrate: 'شكراً لمشاركتي الاحتفال! 🎉',
         formMissing: 'يُرجى كتابة اسمك وبريد صحيح ورسالتك',
@@ -240,11 +231,11 @@ const DYN = {
         modes: { auto: 'المظهر: تلقائي (حسب الوقت)', light: 'المظهر: فاتح', dark: 'المظهر: داكن' },
         groups: { nav: 'انتقال', act: 'إجراءات', link: 'روابط' },
         cmd: {
-            top: 'الرئيسية', work: 'أعمالي — دراسة حالة ONSTA', lab: 'المختبر — مشاريع تجريبية', about: 'نبذة', skills: 'الأدوات', experience: 'الخبرات', services: 'الخدمات — ZM', contact: 'تواصل',
+            top: 'الرئيسية', work: 'أعمالي — دراسة حالة Helcoo AI', lab: 'المختبر — مشاريع تجريبية', about: 'نبذة', skills: 'الأدوات', experience: 'الخبرات', services: 'الخدمات — ZM', contact: 'تواصل',
             themeAuto: 'المظهر: تلقائي (حسب الوقت)', themeLight: 'المظهر: فاتح', themeDark: 'المظهر: داكن',
             cv: 'تحميل السيرة الذاتية (PDF)',
             lang: 'Switch to English', copy: 'نسخ البريد الإلكتروني', rebuild: 'أعِد بناء صورتي',
-            linkedin: 'فتح LinkedIn', whatsapp: 'مراسلة عبر WhatsApp', onsta: 'زيارة onsta.ai',
+            linkedin: 'فتح LinkedIn', whatsapp: 'مراسلة عبر WhatsApp',
         },
         empty: 'لا توجد أوامر مطابقة',
     },
@@ -300,7 +291,6 @@ function applyCopy() {
     i18n.aria.forEach(el => { el.setAttribute('aria-label', ar ? (AR[el.dataset.i18nAria] ?? el.dataset.enAria) : el.dataset.enAria); });
     $$('.split, .scrub').forEach(splitWords);
     prepNameWeight();
-    $$('[data-shot]').forEach(img => { img.src = `assets/onsta/${ar ? 'ar' : 'en'}-${img.dataset.shot}.webp`; });
     $$('.type').forEach(prepType);
     $('#sbLang').textContent = ar ? 'AR' : 'EN';
     $('#paletteBtn').setAttribute('aria-label', t().palette);
@@ -1177,7 +1167,7 @@ function initGSAP() {
             onUpdate: self => { scrubProgress = Math.min(self.progress * 1.2, 1); updateScrub(); },
         });
 
-        // ONSTA: a short hold on the intro, then the track slides sideways.
+        // Work: a short hold on the intro, then the track slides sideways.
         root.classList.add('hs-on');
         const track = $('#hsTrack'), bar = $('#workProgress');
         const distance = () => Math.max(track.scrollWidth - innerWidth, 0);
@@ -1225,7 +1215,6 @@ function commands() {
         { g: 'link', ico: '↓', label: c.cv, run: () => { const a = document.createElement('a'); a.href = 'assets/cv/Zein-Alabdine-Altazah-CV.pdf'; a.download = ''; a.click(); } },
         { g: 'link', ico: 'in', label: c.linkedin, run: () => openLink('https://linkedin.com/in/zein-alabdine-altazah-7344b4281') },
         { g: 'link', ico: 'wa', label: c.whatsapp, run: () => openLink('https://wa.me/971567979912') },
-        { g: 'link', ico: '↗', label: c.onsta, run: () => openLink('https://onsta.ai') },
     ];
 }
 function renderPalette() {
@@ -1562,77 +1551,3 @@ function start() {
 }
 (document.fonts?.ready || Promise.resolve()).then(() => requestAnimationFrame(start));
 
-/* =========================================================
-   3D iPhone — drag to turn it all the way round, it settles
-   back facing you; its tabs (and the app's own bottom bar)
-   switch the ONSTA screen.
-   ========================================================= */
-(() => {
-    const p3 = $('#p3'), body = $('#p3Body');
-    if (!p3) return;
-    const shots = $$('.p3-screen img', p3), tabs = $$('.p3-tabs [data-go]');
-    let ry = -22, rx = 8, vy = 0, down = null, dragging = false, last = 0, current = 'home', t0 = performance.now();
-
-    function show(name) {
-        if (name === current) return;
-        shots.forEach(img => {
-            img.classList.toggle('was-on', img.dataset.shot === current);
-            img.classList.toggle('is-on', img.dataset.shot === name);
-        });
-        tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.go === name));
-        current = name;
-        vy = 0;              // a tab press brings the screen round to face you
-    }
-    $$('[data-go]', p3.parentElement).forEach(b => b.addEventListener('click', e => {
-        if (dragging) { e.preventDefault(); return; }
-        show(b.dataset.go);
-    }));
-    $('#p3Spin').addEventListener('click', () => { vy = reduceMotion ? 0 : (isRTL() ? -15 : 15); });
-
-    // Dragging starts only after a few pixels, so taps still reach the buttons inside.
-    p3.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, id: e.pointerId }; last = e.clientX; vy = 0; });
-    addEventListener('pointermove', e => {
-        if (!down || e.pointerId !== down.id) return;
-        const dx = e.clientX - last;
-        if (!dragging && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 5) { dragging = true; p3.setPointerCapture?.(e.pointerId); }
-        if (!dragging) return;
-        ry += dx * .55;
-        rx = Math.max(-18, Math.min(22, rx - e.movementY * .2));
-        vy = dx * .55;
-        last = e.clientX;
-    });
-    const up = () => { down = null; setTimeout(() => { dragging = false; }, 0); };
-    addEventListener('pointerup', up);
-    addEventListener('pointercancel', up);
-    p3.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') { vy -= 6; e.preventDefault(); }
-        if (e.key === 'ArrowRight') { vy += 6; e.preventDefault(); }
-    });
-
-    // One full turn the first time the phone comes into view.
-    new IntersectionObserver(([en], obs) => {
-        if (!en.isIntersecting) return;
-        obs.disconnect();
-        if (!reduceMotion) vy = isRTL() ? -14 : 14;
-    }, { threshold: .55 }).observe(p3);
-
-    (function loop(now) {
-        requestAnimationFrame(loop);
-        const t = (now - t0) / 1000;
-        if (!dragging) {
-            ry += vy;
-            vy *= .955;
-            if (Math.abs(vy) < .35) {
-                // settle on the nearest front-facing angle, with a slow sway
-                const front = Math.round(ry / 360) * 360 + (reduceMotion ? 0 : Math.sin(t * .7) * 14 - 8);
-                ry += (front - ry) * .05;
-                rx += ((reduceMotion ? 6 : 6 + Math.sin(t * .9) * 3) - rx) * .05;
-            }
-        }
-        const a = ((ry % 360) + 360) % 360;
-        p3.classList.toggle('is-back', a > 90 && a < 270);
-        body.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
-        p3.style.setProperty('--glare', `${50 + Math.sin(ry * Math.PI / 180) * 60}%`);
-        p3.style.setProperty('--sh', (0.75 + 0.25 * Math.abs(Math.cos(ry * Math.PI / 180))).toFixed(3));
-    })(t0);
-})();

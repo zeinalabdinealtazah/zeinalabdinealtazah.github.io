@@ -281,7 +281,8 @@ svg.logo-text { width: 92px; height: 18px; display: block; }
 .blob.moving { animation: squish .55s cubic-bezier(.34, 1.45, .64, 1); }
 @keyframes squish { 40% { scale: 1.12 .86; } }
 
-.nav-actions { display: flex; align-items: center; gap: 6px; }
+.nav-actions { display: flex; align-items: center; gap: 6px; flex: none; }
+.nav-actions > *, .kbd-hint { white-space: nowrap; flex: none; }
 .icon-btn, .kbd-btn {
     display: grid; place-items: center; height: 42px; min-width: 42px; border-radius: 999px;
     border: 1px solid transparent; transition: background .3s, border-color .3s;
@@ -579,10 +580,10 @@ html[dir="rtl"] .work-progress span { transform-origin: right; }
 
 .panel-intro { padding-block: 8px 24px; }
 .panel-kicker { font-family: var(--font-mono); color: var(--accent); font-size: .92rem; font-weight: 500; margin-bottom: 14px; }
-.onsta {
+.work-name {
     font-family: var(--font-num); font-weight: 800;
-    /* never wider than the column: "ONSTA" is ~4.4em wide, so on phones it follows the screen width */
-    font-size: clamp(min(4.6rem, 19vw), min(15vw, 24vh), 13rem); line-height: .84; letter-spacing: -.07em; padding-bottom: .04em;
+    /* never wider than the column: "Helcoo AI" is ~4.5em wide, so on phones it follows the screen width */
+    font-size: clamp(min(4.6rem, 19vw), min(11.5vw, 21vh), 10.5rem); line-height: .84; white-space: nowrap; letter-spacing: -.07em; padding-bottom: .04em;
     background: linear-gradient(180deg, var(--text) 35%, color-mix(in srgb, var(--text) 30%, transparent));
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
@@ -649,7 +650,7 @@ html[lang="ar"] .layer-name { letter-spacing: 0; line-height: 1.4; }
     .stat { padding-top: 16px; }
     .stat dd { font-size: clamp(2rem, min(4vw, 6vh), 3.2rem); }
     .eyebrow { margin-bottom: 16px; }
-    .onsta { font-size: clamp(4rem, min(13vw, 19vh), 10rem); }
+    .work-name { font-size: clamp(4rem, min(13vw, 19vh), 10rem); }
     .panel-kicker { margin-bottom: 8px; }
     .panel-lead { margin-top: 12px; font-size: 1rem; }
     .panel-meta { margin-top: 16px; padding-top: 14px; }
@@ -834,78 +835,7 @@ html[lang="ar"] .form-q { letter-spacing: 0; }
 .to-top { display: inline-flex; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); transition: color .3s, border-color .3s; }
 .to-top:hover { color: var(--text); border-color: var(--line-2); }
 
-/* ONSTA: store links and real app screens in phone frames */
-.store {
-    display: inline-flex; align-items: center; gap: 6px; height: 40px; padding-inline: 16px; border-radius: 999px;
-    border: 1px solid var(--line-2); background: var(--nav-bg); font-size: .88rem; font-weight: 500; transition: border-color .3s, color .3s;
-}
-.store:hover { border-color: var(--accent); color: var(--accent); }
 .panel-intro .swipe-hint { margin-top: 18px; }
-.panel-phones { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 8px 0 4px; }
-
-/* 3D iPhone: a stack of rounded slabs gives real thickness with rounded corners;
-   the front and back faces sit on top of the stack. */
-.p3 { position: relative; height: min(64svh, 520px); aspect-ratio: 260 / 538; perspective: 1400px; touch-action: pan-y; cursor: grab; outline: none; user-select: none; -webkit-user-select: none; }
-.p3:active { cursor: grabbing; }
-.p3:focus-visible .p3-front { box-shadow: 0 0 0 3px var(--accent); }
-.p3-body { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
-.p3-layer {
-    position: absolute; inset: 0; border-radius: 15% / 7.3%;
-    background: linear-gradient(90deg, #6d6f7a, #b9bbc6 30%, #8e909b 55%, #c9cbd5 80%, #5d5f69);
-    transform: translateZ(calc(var(--z) * 1px));
-}
-.p3-front, .p3-back { position: absolute; inset: 0; border-radius: 15% / 7.3%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.p3-front { transform: translateZ(7px); padding: 3.4%; background: #0a0a0d; box-shadow: inset 0 0 0 1.5px #3a3c45; }
-.p3-back {
-    transform: rotateY(180deg) translateZ(7px);
-    background: radial-gradient(120% 80% at 30% 20%, #2c2b3d, #14131c 70%); box-shadow: inset 0 0 0 1.5px #3a3c45;
-    display: grid; place-items: center;
-}
-.p3-cam { position: absolute; top: 3.5%; left: 7%; width: 38%; aspect-ratio: 1; border-radius: 26%; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); }
-html[dir="rtl"] .p3-cam { left: auto; right: 7%; }
-.p3-cam i { position: absolute; width: 38%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #3b4a6b, #07080c 60%); box-shadow: 0 0 0 3px #1c1c24, 0 0 0 4px rgba(255, 255, 255, .12); }
-.p3-cam i:nth-child(1) { top: 8%; left: 8%; }
-.p3-cam i:nth-child(2) { bottom: 8%; left: 8%; }
-.p3-cam i:nth-child(3) { top: 31%; right: 8%; }
-.p3-logo { width: 26%; border-radius: 22%; opacity: .9; box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
-.p3-screen { position: relative; width: 100%; height: 100%; border-radius: 12.6% / 6%; overflow: hidden; background: #efe7d6; }
-.p3-screen img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none;
-    opacity: 0; transform: translateX(8%) scale(.98); transition: opacity .45s var(--ease), transform .6s var(--ease);
-}
-.p3-screen img.is-on { opacity: 1; transform: none; }
-.p3-screen img.was-on { transform: translateX(-8%) scale(.98); }
-.p3-island { position: absolute; top: 1.6%; left: 50%; width: 30%; height: 3.4%; translate: -50% 0; border-radius: 999px; background: #050507; }
-.p3-glare {
-    position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
-    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .22) 48%, transparent 60%);
-    background-size: 250% 100%; background-position: var(--glare, 50%) 0;
-}
-/* the app's own bottom bar: Home · AI · Account */
-.p3-hot { position: absolute; left: 3%; right: 3%; bottom: 1.4%; height: 9%; display: grid; grid-template-columns: minmax(0, 1fr) 1fr 1fr; }
-.p3-hot button { border-radius: 999px; transition: background .2s; }
-.p3-hot button:hover { background: rgba(80, 6, 253, .08); }
-.p3.is-back .p3-hot { pointer-events: none; }
-.p3-shadow { position: absolute; left: 12%; right: 12%; bottom: -5%; height: 5%; border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, .45), transparent); filter: blur(4px); transform: scaleX(var(--sh, 1)); }
-[data-theme="light"] .p3-shadow { background: radial-gradient(closest-side, rgba(30, 20, 80, .25), transparent); }
-
-.p3-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 5px; border-radius: 999px; background: var(--glass-bg); border: 1px solid var(--glass-edge); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-.p3-tabs button { padding: 7px 14px; border-radius: 999px; font-size: .82rem; color: var(--text-2); transition: background .3s, color .3s; }
-.p3-tabs button:hover { color: var(--text); }
-.p3-tabs button[aria-selected="true"] { background: var(--accent-fill); color: #fff; }
-.p3-tabs .p3-spin { font-variation-settings: "MONO" 1; border: 1px solid var(--line-2); }
-.phones-note { font-size: .74rem; color: var(--muted); text-align: center; font-variation-settings: "MONO" 1; }
-@media (min-width: 900px) {
-    /* tabs sit beside the phone so the phone gets the panel's full height */
-    .hs-on .panel-phones {
-        width: auto; padding-inline: 24px; flex-direction: row; gap: 28px;
-        display: grid; grid-template-columns: auto auto; grid-template-rows: 1fr auto; align-items: center;
-    }
-    .hs-on .p3 { grid-row: 1 / 3; height: min(calc(100% + 24px), 560px); }
-    .hs-on .p3-tabs { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 6px; align-self: end; }
-    .hs-on .p3-tabs button { text-align: start; padding: 9px 16px; border-radius: 14px; }
-    .hs-on .phones-note { align-self: start; max-width: 15em; text-align: start; line-height: 1.6; }
-}
 
 .facts.edu { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; padding-top: 20px; border-top: 0; }
 .award-org { font-size: .8rem; color: var(--text-2); }
@@ -1527,4 +1457,3 @@ html[lang="ar"] .insp-k { text-transform: none; letter-spacing: 0; }
 .svc-mail { font-family: var(--font-mono); font-size: .85rem; color: var(--muted); }
 @media (max-width: 900px) { .svc-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .svc-grid, .svc-steps { grid-template-columns: minmax(0, 1fr); } }
-.panel-note { max-width: 52ch; margin: 18px 0 4px; padding: 12px 14px; border-inline-start: 2px solid var(--accent); border-radius: 10px; background: var(--surface); color: var(--text-2); font-size: .86rem; line-height: 1.55; }

@@ -254,7 +254,7 @@ const capture = (() => {
                         <li data-c="still"><i></i>${tx('Holding still', 'ثبات الصورة')}</li>
                     </ul>
                     <figure class="shot" hidden><canvas></canvas><figcaption><b>${tx('Captured automatically', 'التُقطت تلقائياً')}</b><small data-h="meta"></small></figcaption><button class="btn btn-ghost btn-sm" type="button" data-again>${tx('Capture again', 'التقاط مجدداً')}</button></figure>
-                    <p class="lab-note">${tx('The same idea as ONSTA’s guided capture: MediaPipe Face Landmarker, GPU-accelerated, entirely in the browser.', 'الفكرة نفسها في التقاط ONSTA الموجَّه: MediaPipe Face Landmarker يعمل بتسريع الرسوميات، كلياً داخل المتصفح.')}</p>
+                    <p class="lab-note">${tx('MediaPipe Face Landmarker, GPU-accelerated, entirely in the browser — nothing leaves your device.', 'يعمل MediaPipe Face Landmarker بتسريع الرسوميات، كلياً داخل المتصفح — ولا يغادر شيء جهازك.')}</p>
                 </aside>
             </div>`;
             const video = $('video', body), ov = $('.cam-ov', body), shot = $('.shot', body);
@@ -611,7 +611,7 @@ const rtl = (() => ({
             <header class="rt-bar"><div class="seg" role="group"><button type="button" data-m="physical" aria-pressed="true">${tx('Physical CSS (left/right)', 'خصائص فيزيائية (left/right)')}</button><button type="button" data-m="logical" aria-pressed="false">${tx('Logical CSS (start/end)', 'خصائص منطقية (start/end)')}</button></div><span class="rt-score"></span></header>
             <div class="rt-body"><div class="rt-phones">${phone('ltr')}${phone('rtl')}</div>
                 <aside class="rt-side"><p class="lab-k">${tx('What changes in Arabic', 'ما الذي يتغيّر بالعربية')}</p><ol class="rt-issues">${ISSUES.map((s, i) => `<li><i>${i + 1}</i>${s}</li>`).join('')}</ol><pre class="rt-code" dir="ltr"></pre></aside></div>
-            <p class="lab-note">${tx('The same component, written two ways. Physical properties hard-wire left and right, so the Arabic screen breaks in six places; logical properties follow the reading direction — the way ONSTA’s Arabic interface is built.', 'المكوّن نفسه مكتوباً بطريقتين. الخصائص الفيزيائية تثبّت اليسار واليمين، فتنكسر الشاشة العربية في ستة مواضع؛ أما المنطقية فتتبع اتجاه القراءة — وهي الطريقة التي بُنيت بها واجهة ONSTA العربية.')}</p>
+            <p class="lab-note">${tx('The same component, written two ways. Physical properties hard-wire left and right, so the Arabic screen breaks in six places; logical properties follow the reading direction — the way production Arabic interfaces should be built.', 'المكوّن نفسه مكتوباً بطريقتين. الخصائص الفيزيائية تثبّت اليسار واليمين، فتنكسر الشاشة العربية في ستة مواضع؛ أما المنطقية فتتبع اتجاه القراءة — وهي الطريقة التي ينبغي أن تُبنى بها الواجهات العربية في بيئة الإنتاج.')}</p>
         </div>`;
         const root_ = $('.x-rtl', body);
         const apply = () => {
